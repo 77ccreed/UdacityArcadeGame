@@ -1,39 +1,56 @@
+//generating random number for the speed, function from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 
+function randomSpeed() {
+    return (Math.floor(Math.random() * 160) + 40);
+};
 
 const tileWidth = 101;
 const tileHeight = 83;
 // Enemies our player must avoid
-let Enemy = function (x, y, speed) {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-    this.x = x;
-    this.y = y;
 
-    this.speed = speed;
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
-};
+class Enemy {
+    constructor(z, speed) {
+        // Variables applied to each of our instances go here,
+        // we've provided one for you to get started
 
-// Update the enemy's position, required method for game
-// Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function (dt) {
-   
+        // The image/sprite for our enemies, this uses
+        // a helper we've provided to easily load images
+        this.sprite = 'images/enemy-bug.png';
+        this.x = -70;
+        this.y = z;
+        this.speed = speed;
+    }
 
-    this.x += (this.speed * dt);
-    if (this.x > 500) this.x = -100;
+    // Update the enemy's position, required method for game
+    // Parameter: dt, a time delta between ticks
+    update(dt) {
+        if (this.x < 505) {
+            this.x += this.speed * dt;
+        }
+        else {
+            this.x = -70;
+        }
+        //2D collision detection function from: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
+        if (this.x < player.x + 55 &&
+            this.x + 60 > player.x &&
+            this.y < player.y + 92 &&
+            65 + this.y > player.y) {
+            player.x = 200;
+            player.y = 400;
+        }
+    }
+
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-};
 
-// Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    if (this.x > 500) {
-        this.x -= 600;
+    // Draw the enemy on the screen, required method for game
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
-};
+}
+
+
 
 // Now write your own player class
 let Player = function (x,y) {
@@ -75,7 +92,16 @@ Player.prototype.handleInput = function (key) {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [];
+
+
+const newEnemy = new Enemy(65, randomSpeed());
+const newEnemy1 = new Enemy(65, randomSpeed());
+const newEnemy2 = new Enemy(148, randomSpeed());
+const newEnemy3 = new Enemy(148, randomSpeed());
+const newEnemy4 = new Enemy(231, randomSpeed());
+const newEnemy5 = new Enemy(231, randomSpeed());
+
+const allEnemies = [newEnemy, newEnemy1, newEnemy2, newEnemy3, newEnemy4, newEnemy5];
 // Place the player object in a variable called player
 let player = new Player();
 
