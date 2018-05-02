@@ -2,14 +2,14 @@
 
 function randomSpeed() {
     return (Math.floor(Math.random() * 160) + 40);
-};
+}
 
 const tileWidth = 101;
 const tileHeight = 83;
 // Enemies our player must avoid
 
 class Enemy {
-    constructor(z, speed) {
+    constructor(y, speed) {
         // Variables applied to each of our instances go here,
         // we've provided one for you to get started
 
@@ -17,7 +17,7 @@ class Enemy {
         // a helper we've provided to easily load images
         this.sprite = 'images/enemy-bug.png';
         this.x = -70;
-        this.y = z;
+        this.y = y;
         this.speed = speed;
     }
 
@@ -31,12 +31,12 @@ class Enemy {
             this.x = -70;
         }
         //2D collision detection function from: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
-        if (this.x < player.x + 55 &&
+        if (this.x < player.x + 25 &&
             this.x + 60 > player.x &&
-            this.y < player.y + 92 &&
+            this.y < player.y + 52 &&
             65 + this.y > player.y) {
-            player.x = 200;
-            player.y = 400;
+            player.x = 202;
+            player.y = 390;
         }
     }
 
@@ -58,6 +58,7 @@ let Player = function (x,y) {
         this.y = 390;
         this.sprite = 'images/char-boy.png';
 };
+
 
     Player.prototype.update = function (dt) {};
     Player.prototype.render = function () {
@@ -94,12 +95,12 @@ Player.prototype.handleInput = function (key) {
 // Place all enemy objects in an array called allEnemies
 
 
-const newEnemy = new Enemy(65, randomSpeed());
-const newEnemy1 = new Enemy(65, randomSpeed());
-const newEnemy2 = new Enemy(148, randomSpeed());
-const newEnemy3 = new Enemy(148, randomSpeed());
-const newEnemy4 = new Enemy(231, randomSpeed());
-const newEnemy5 = new Enemy(231, randomSpeed());
+const newEnemy = new Enemy(63, randomSpeed());
+const newEnemy1 = new Enemy(63, randomSpeed());
+const newEnemy2 = new Enemy(147, randomSpeed());
+const newEnemy3 = new Enemy(147, randomSpeed());
+const newEnemy4 = new Enemy(230, randomSpeed());
+const newEnemy5 = new Enemy(230, randomSpeed());
 
 const allEnemies = [newEnemy, newEnemy1, newEnemy2, newEnemy3, newEnemy4, newEnemy5];
 // Place the player object in a variable called player
