@@ -146,12 +146,12 @@ Player.prototype.handleInput = function (key) {
 // Place all enemy objects in an array called allEnemies
 
 
-const newEnemy = new Enemy(getRandomInt(3), randomSpeed());
-const newEnemy1 = new Enemy(getRandomInt(3), randomSpeed());
-const newEnemy2 = new Enemy(getRandomInt(3), randomSpeed());
-const newEnemy3 = new Enemy(getRandomInt(3), randomSpeed());
-const newEnemy4 = new Enemy(getRandomInt(3), randomSpeed());
-const newEnemy5 = new Enemy(getRandomInt(3), randomSpeed());
+const newEnemy = new Enemy(getRandomInt(3), getRandomInt(8));
+const newEnemy1 = new Enemy(getRandomInt(3), getRandomInt(8));
+const newEnemy2 = new Enemy(getRandomInt(3), getRandomInt(8));
+const newEnemy3 = new Enemy(getRandomInt(3), getRandomInt(8));
+const newEnemy4 = new Enemy(getRandomInt(3), getRandomInt(8));
+const newEnemy5 = new Enemy(getRandomInt(3), getRandomInt(8));
 
 const allEnemies = [newEnemy, newEnemy1, newEnemy2, newEnemy3, newEnemy4, newEnemy5];
 // Place the player object in a variable called player
