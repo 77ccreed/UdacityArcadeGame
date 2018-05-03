@@ -56,7 +56,7 @@ class Player {
         this.sprite = 'images/char-boy.png';
     }
     update(dt) {
-        if (this.y < 0 && this.x===202) {
+        if (this.y < 0) {
             this.x = 202;
             this.y = 390;
         }
