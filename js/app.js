@@ -1,8 +1,4 @@
-//generating random number for the speed, function from https://stackoverflow.com/questions/4959975/generate-random-number-between-two-numbers-in-javascript
 
-function randomSpeed() {
-    return (Math.floor(Math.random() * 160) + 40);
-}
 
 function getRandomInt(max) {
     return (Math.floor(Math.random() * Math.floor(max) + 1) * 63);
