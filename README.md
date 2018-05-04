@@ -1,4 +1,4 @@
-frontend-nanodegree-arcade-game
+Frontend-Nanodegree-Arcade-Game
 ===============================
 
 # Description

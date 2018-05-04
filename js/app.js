@@ -1,4 +1,3 @@
-
 // Random number, use when make bug speed and row
 function getRandomInt(max) {
     return (Math.floor(Math.random() * Math.floor(max) + 1) * 63);
@@ -89,12 +88,9 @@ class Player {
                     this.x += tileWidth;
                 }
                 break;
-
         }
     }
-
 }
-
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
