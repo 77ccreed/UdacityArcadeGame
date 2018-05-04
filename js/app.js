@@ -1,13 +1,14 @@
 
-
+// Random number, use when make bug speed and row
 function getRandomInt(max) {
     return (Math.floor(Math.random() * Math.floor(max) + 1) * 63);
 }
 
+// Canvas width and heigth
 const tileWidth = 101;
 const tileHeight = 83;
-// Enemies our player must avoid
 
+// Enemies our player must avoid
 class Enemy {
     constructor(y, speed) {
         // Variables applied to each of our instances go here,
@@ -49,6 +50,7 @@ class Enemy {
     }
 }
 
+// Now write your own player class
 class Player {
     constructor(y, x) {
         this.x = 202;
@@ -92,55 +94,10 @@ class Player {
     }
 
 }
-// Now write your own player class
-/*
-let Player = function (x, y) {
-    this.x = 202;
-    this.y = 390;
-    this.sprite = 'images/char-boy.png';
-
-};
-
-
-Player.prototype.update = function (dt) {};
-Player.prototype.render = function () {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
-// This class requires an update(), render() and
-// a handleInput() method.
-Player.prototype.handleInput = function (key) {
-    switch (key) {
-        case 'up':
-            if (this.y > 0) {
-                this.y -= tileHeight;
-            }
-            break;
-        case 'down':
-            if (this.y < 370) {
-                this.y += tileHeight;
-            }
-            break;
-        case 'left':
-            if (this.x >= tileWidth) {
-                this.x -= tileWidth;
-            }
-            break;
-        case 'right':
-            if (this.x <= 303) {
-                this.x += tileWidth;
-            }
-            break;
-    }
-
- console.log(this.x, this.y);
- 
-};*/
-
 
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-
 
 const newEnemy = new Enemy(getRandomInt(3), getRandomInt(8));
 const newEnemy1 = new Enemy(getRandomInt(3), getRandomInt(8));
