@@ -43,6 +43,8 @@ class Enemy extends gameObject{
             this.x += this.speed * dt;
         } else {
             this.x = -70;
+            this.y = getRandomInt(3);
+            this.speed = getRandomInt(8);
         }
         //2D collision detection function from: https://developer.mozilla.org/en-US/docs/Games/Techniques/2D_collision_detection
         if (this.x < player.x + 35 &&
