@@ -1,3 +1,10 @@
+"use strict";
+
+// Variables
+let lives = 5;
+let level = 1;
+let score = 0;
+
 // Random number, use when make bug speed and row
 function getRandomInt(max) {
     return (Math.floor(Math.random() * Math.floor(max) + 1) * 63);
@@ -7,14 +14,22 @@ function getRandomInt(max) {
 const tileWidth = 101;
 const tileHeight = 83;
 
+// Superclass, some common methods in both player and enemy classes have
+class gameObject {
+    render(xOffset = 0, yOffset = 0, spriteWidth = 101, spriteHeight = 171) {
+        ctx.drawImage(Resources.get(this.sprite), (this.x + xOffset), (this.y + yOffset), spriteWidth, spriteHeight);
+    }
+}
+
 // Enemies our player must avoid
-class Enemy {
+class Enemy extends gameObject{
     constructor(y, speed) {
         // Variables applied to each of our instances go here,
         // we've provided one for you to get started
 
         // The image/sprite for our enemies, this uses
         // a helper we've provided to easily load images
+        super();
         this.sprite = 'images/enemy-bug.png';
         this.x = -70;
         this.y = y;
@@ -36,6 +51,12 @@ class Enemy {
             65 + this.y > player.y) {
             player.x = 202;
             player.y = 390;
+            lives = document.getElementById("livesDisplay").innerHTML;
+            lives--;
+            document.getElementById("livesDisplay").innerHTML = lives;
+            if (lives === 0) {
+                gameLost(level, score)
+            }
         }
     }
 
@@ -44,14 +65,13 @@ class Enemy {
     // all computers.
 
     // Draw the enemy on the screen, required method for game
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
+   
 }
 
 // Now write your own player class
-class Player {
+class Player extends gameObject {
     constructor(y, x) {
+        super();
         this.x = 202;
         this.y = 390;
         this.sprite = 'images/char-boy.png';
@@ -60,12 +80,14 @@ class Player {
         if (this.y < 0) {
             this.x = 202;
             this.y = 390;
+            score += 100;
+            document.getElementById("scoreDisplay").innerHTML = score;
+            level++;
+            document.getElementById("levelDisplay").innerHTML = level;
         }
     }
 
-    render() {
-        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    }
+
     handleInput(key) {
         switch (key) {
             case 'up':
