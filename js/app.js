@@ -53,11 +53,16 @@ class Enemy extends gameObject{
             65 + this.y > player.y) {
             player.x = 202;
             player.y = 390;
+
+            score -= 50;
+            document.getElementById("scoreDisplay").innerHTML = score;
+           
+
             lives = document.getElementById("livesDisplay").innerHTML;
             lives--;
             document.getElementById("livesDisplay").innerHTML = lives;
             if (lives === 0) {
-                gameLost(level, score)
+                gameLost(level, score);
             }
         }
     }
@@ -143,7 +148,6 @@ document.addEventListener('keyup', function (e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
 
 // Alert for lost game
 function gameLost(level, score) {
