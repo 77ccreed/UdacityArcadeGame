@@ -7,7 +7,7 @@ let score = 0;
 
 // Random number, use when make bug speed and row
 function getRandomInt(max) {
-    return (Math.floor(Math.random() * Math.floor(max) + 1) * 63);
+    return (Math.floor(Math.random() * Math.floor(max) + 1) * 72);
 }
 
 // Canvas width and heigth
@@ -53,11 +53,8 @@ class Enemy extends gameObject{
             65 + this.y > player.y) {
             player.x = 202;
             player.y = 390;
-
             score -= 50;
             document.getElementById("scoreDisplay").innerHTML = score;
-           
-
             lives = document.getElementById("livesDisplay").innerHTML;
             lives--;
             document.getElementById("livesDisplay").innerHTML = lives;
