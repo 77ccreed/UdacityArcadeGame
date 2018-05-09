@@ -75,8 +75,7 @@ class Enemy extends gameObject{
                    // Add a click event listener to the document
                    document.addEventListener('keydown', e => {
                        if (e.keyCode === 13) {
-                           loseModal.style.display = 'none';
-                           
+                           loseModal.style.display = 'none';              
                            level=1;
                            document.getElementById("levelDisplay").innerHTML = level;
                           score = 0;
