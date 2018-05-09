@@ -142,6 +142,15 @@ class Player extends gameObject {
     }
 }
 
+class Rock extends gameObject {
+constructor(x,y){
+      super();
+      this.x = 400;
+      this.y = 200;
+      this.sprite = 'images/Rock.png';
+}
+}
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 
@@ -153,6 +162,9 @@ const newEnemy4 = new Enemy(getRandomInt(3), getRandomInt(8));
 const newEnemy5 = new Enemy(getRandomInt(3), getRandomInt(8));
 
 const allEnemies = [newEnemy, newEnemy1, newEnemy2, newEnemy3, newEnemy4, newEnemy5];
+// Place all rock objects in an array called allRock
+const newRock = new Rock();
+const allRock = [newRock];
 // Place the player object in a variable called player
 let player = new Player();
 
