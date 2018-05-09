@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Arcade Game</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div>Level:
         <span id="levelDisplay">1</span> | Score:
         <span id="scoreDisplay">0</span> | Lives:
         <span id="livesDisplay">5</span>
     </div>
+
+<div class="modal" id="win_modal">
+    <div class="modal_content">
+        <h1>Congratulations!</h1>
+        <h2>You won!</h2>
+        <button class="rePlay">Play again?</button>
+    </div>
+</div>
+
+<div class="modal" id="lose_modal">
+    <div class="modal_content">
+        <h1>You lost :(</h1>
+        <h2>Press Enter to play again</h2>
+    </div>
+</div>
+
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
 </body>
+
 </html>

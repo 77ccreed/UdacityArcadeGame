@@ -1,24 +1,32 @@
 "use strict";
 
-// Variables
-let lives = 5;
-let level = 1;
-let score = 0;
-
-// Random number, use when make bug speed and row
+// Random number, use when make bug speed and row (I add +1(row) and *72(height))
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 function getRandomInt(max) {
     return (Math.floor(Math.random() * Math.floor(max) + 1) * 72);
 }
 
+// Variables
+let lives = 5;
+let level = 1;
+let score = 0;
+
 // Canvas width and heigth
 const tileWidth = 101;
 const tileHeight = 83;
 
+
 // Superclass, some common methods in both player and enemy classes have
 class gameObject {
-    render(xOffset = 0, yOffset = 0, spriteWidth = 101, spriteHeight = 171) {
-        ctx.drawImage(Resources.get(this.sprite), (this.x + xOffset), (this.y + yOffset), spriteWidth, spriteHeight);
+    //constructor for gameObject
+    constructor(x, y, sprite) {
+        this.x = x;
+        this.y = y;
+        this.sprite = sprite;
+    }
+    // Draw the gameObject on the screen
+    render() {
+        ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
 
@@ -60,7 +68,23 @@ class Enemy extends gameObject{
             lives--;
             document.getElementById("livesDisplay").innerHTML = lives;
             if (lives === 0) {
-                gameLost(level, score);
+                   // Select modal
+                   const loseModal = document.getElementById('lose_modal');
+                   // Switch modal from display none to display block
+                   loseModal.style.display = 'block';
+                   // Add a click event listener to the document
+                   document.addEventListener('keydown', e => {
+                       if (e.keyCode === 13) {
+                           loseModal.style.display = 'none';
+                           
+                           level=1;
+                           document.getElementById("levelDisplay").innerHTML = level;
+                          score = 0;
+                          document.getElementById("scoreDisplay").innerHTML = score;
+                          lives = 5;
+                          document.getElementById("livesDisplay").innerHTML = lives;
+                       }
+                   });
             }
         }
     }
@@ -133,7 +157,6 @@ const allEnemies = [newEnemy, newEnemy1, newEnemy2, newEnemy3, newEnemy4, newEne
 // Place the player object in a variable called player
 let player = new Player();
 
-
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function (e) {
@@ -147,7 +170,3 @@ document.addEventListener('keyup', function (e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-// Alert for lost game
-function gameLost(level, score) {
-    location.reload();
-}

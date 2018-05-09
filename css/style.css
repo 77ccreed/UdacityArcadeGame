@@ -1,3 +1,45 @@
 body {
     text-align: center;
 }
+
+.modal {
+    background-color: rgba(0, 0, 0, 1);
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.modal_content {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    font-weight: bold;
+    height: 55%;
+    justify-content: center;
+    margin: 100px auto;
+    padding: 25px;
+    position: relative;
+    width: 60%;
+}
+
+.rePlay {
+    background-color: #f00;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.rePlay:hover {
+    background-color: #000;
+    cursor: pointer;
+}
