@@ -141,19 +141,6 @@ class Player extends gameObject {
         }
     }
 }
-//TODO create working class
-class Rock extends gameObject {
-constructor(x,y){
-      super();
-      this.x = 400;
-      this.y = 200;
-      this.sprite = 'images/Rock.png';
-}
-}
-
-// TODO Place all rock objects in an array called allRock
-//const newRock = new Rock();
-//const allRock = [newRock];
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
